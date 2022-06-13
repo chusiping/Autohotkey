@@ -10,6 +10,7 @@ Menu, MyMenu, Add, typechoDB保存,    ma6
 Menu, MyMenu, Add, 保存同花顺自选股,   ma7
 Menu, MyMenu, Add, 启动爬虫,   	 	 ma9
 Menu, MyMenu, Add, 显示新闻,   	 	 ma10
+Menu, MyMenu, Add, 拷贝FormMakinghtml,	 ma11
 
 Menu, MyMenu, Add  
 
@@ -90,6 +91,11 @@ ma10:
 	send, node api_newslist.js {enter}
 	run, http://127.0.0.1:3000/content_newslist_bak.html
 return
+
+ma11:
+	CopyClipFile("E:\git_15home\puppeteer\范例代码\原型设计-表单示例_微信接口示例.html")
+return
+
 
 #z::Menu, MyMenu, Show  ; 即按下 Win-Z 热键来显示菜单.
 

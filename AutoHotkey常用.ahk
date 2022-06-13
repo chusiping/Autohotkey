@@ -86,6 +86,24 @@ return
 			send , 1
 		return
 	return
+
+;===========  西瓜网WheelUp	==============
+	!WheelUp::
+		WinGetTitle, title, A
+		If InStr(title,"西瓜视频")
+			send , {right}　　
+		else
+			send , {ctrl}+{WheelUp}
+		return
+	return
+	!WheelDown::
+		WinGetTitle, title, A
+		If InStr(title,"西瓜视频")
+			send , {left}　　
+		else
+			send , {ctrl}+{WheelDown}
+		return
+	return
 #IfWinActive
 
 
@@ -193,6 +211,13 @@ return
 	return
 #IfWinActive
 
+;################ markdown ############
+#IfWinActive, ahk_exe Typora.exe
+	^w::
+	send,^/
+	return
+#IfWinActive
+
 ;################ windows相片看视频 ############
 #IfWinActive, ahk_exe ApplicationFrameHost.exe
 	$RButton::
@@ -264,6 +289,22 @@ ProcSubroutine:
 :*:/php:: set path=%path%;E:\xampp\php\       php -S 127.0.0.1:3000;
 :*:/if::if(){{}`n{down};{up}{up}{right}
 :*:/nodejs::cd /nodeApp/zhhw-nodejs/download
+:*:/cmd::reg add "HKLM\SOFTWARE\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "cd /d E:\git_15home\puppeteer\express\gp涨幅天数排行"
+
+:*:/curl::
+	clipboard = 
+	(
+		curl -b "oa2.txt" "https://oa.gzqiaoyin.com/wui/main.jsp"
+
+		curl --cookie "从editCookie插件导出" "https://oa.gzqiaoyin.com/wui/main.jsp"
+
+		curl --cookie "em_hq_fls=.....1654581252879" "http://myfavor.eastmoney.com/v4/webouter/as?appkey=d41d8cd98f00b204e9800998ecf8427e&cb=jQuery33103190186058732998_165458125273&g=1&sc=0`%24000968&_=1654581252879" --referer http://quote.eastmoney.com/
+
+		curl -v -I --referer http://baidu.com --user-agent 'Chrome/54.0 (Windows NT 10.0)' http://baidu.com/ 
+
+	)
+	Send ^v
+	return 
 
 :*:/net ::
 	clipboard = 
@@ -518,6 +559,19 @@ ProcSubroutine:
 	)
 	Send ^v
 	return 
+;=========== npm ==================
+:*:/npm::
+	clipboard = 
+	(
+	node -v && npm -v && vue -V
+	npm prefix -g  //查看全局路径
+	npm config ls 
+	npm install -g @vue/cli-service
+	yarn global bin  //查看 yarn 全局bin位置
+	yarn global dir  //查看 yarn 全局安装位置
+	)
+	Send ^v
+	return
 ;===========centos 定时任务
 :*:/time::
 	clipboard = 
@@ -560,6 +614,111 @@ ProcSubroutine:
 	Send ^v
 	return 
 	
+;===========formMaking tab点击隐藏javascript代码
+:*:/form::
+	clipboard = 
+	(
+************** 语法 ***************************
+var a = arguments[0];
+console.log(a)
+console.log(a.value)
+
+this.getValue('sele1')
+this.reset()
+this.hide(['tb1']);
+this.display(['tb1']);
+this.$message.error("先勾选并同意服务协议");
+this.$message.success("注册成功");
+this.setData({ active: 1, amountStr: `<h2>${data.amount}元</h2>`})
+
+**************  tab控件 ***************************
+var tabValue = this.getValue('sele1');   //tab控件ID的选值 ： a1,a2,a3
+var idx = "3";                          //tab页个数
+var Num = tabValue.substring(tabValue.length - 1);        //取出a1阿拉伯数字
+var tab内容项 = "qy"; //隐藏区域名称
+var tabArr1 = [];
+var tabArr2 = [];
+for (let i = 1; i <= idx; i++) {
+    if (i == Num) {
+        tabArr1.push(tab内容项 + i);
+        continue;
+    }
+    tabArr2.push(tab内容项 + i);
+}
+this.display(tabArr1);
+this.hide(tabArr2);
+console.log("显示：" + tabArr1.toString())
+console.log("隐藏：" + tabArr2.toString())
+
+**************  dropdownlist控件 ***************************
+var tabValue = this.getValue('drp1'); 
+if(tabValue==""){
+	this.hide(['tb1']);
+}else{
+	this.display(['tb1']);
+}
+**************  提交 ***************************
+var tabValue = this.getValue('drp1');
+if(tabValue==""){
+	
+}
+**************  校验规则(未测试) ***************************
+this.setRules('input',[{required:true,message:'必须填写'}])
+this.setOptions(['input'],{required:true})
+
+**************  message提示  ***************************
+this.getData().then((data) => {
+    if (this.getValue("check").length) {
+        this.$message.success("注册成功");
+    } else {
+        this.$message.error("先勾选并同意服务协议");
+    }
+});
+
+this.$alert('您点击</br>了我', '提示',{dangerouslyUseHTMLString:true}).then(() => {
+    console.log("bt");
+    this.setData({
+        name: '123'
+    })
+})
+
+this.$confirm('您点击</br>了我', '提示',{dangerouslyUseHTMLString:true,type:'info'}).then(() => {
+    console.log("bt");
+    this.setData({
+        name: '123'
+    })
+})
+	
+******************** 多级联 ********************
+[
+	{
+		"value": "广东",
+		"label": "广东",
+		"children": [
+			{
+				"value": "广东 - 广州",
+				"label": "广东 - 深圳"
+			}
+		]
+	},
+	{
+		"value": "广西",
+		"label": "广西",
+		"children": [
+			{
+				"value": "广西 - 南宁",
+				"label": "广西 - 贺州"
+			}
+		]
+	},
+	{
+		"value": "浙江",
+		"label": "浙江"
+	}
+]
+	)
+	Send ^v
+	return 
 	
 	
 	

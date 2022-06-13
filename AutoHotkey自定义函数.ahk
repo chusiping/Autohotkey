@@ -219,7 +219,7 @@
             str := arrNew%A_Index%
             sendinput,{text}%str%
             sleep  800
-            click, 1544,464
+            click, 1644,464
             sleep  1200
             click, 1554,374
             sleep  600
@@ -279,6 +279,7 @@
     {
         FileDelete, D:\海王星金融终端-中国银河证券\T0002\blocknew\ZXG.blk
         FileAppend, %arr%, D:\海王星金融终端-中国银河证券\T0002\blocknew\ZXG.blk
+        FileAppend, %arr%, C:\Users\Administrator\Desktop\自选股.sel
         tooltip 成功
         sleep 1000
         tooltip
@@ -294,8 +295,25 @@
         rt:= head str
         return rt
     }
-
-    
+    ;拷贝复制html
+    CopyClipFile(filep)
+    {
+        FileRead, OutputVar, % filep
+        if not ErrorLevel  ; 加载成功
+        {
+            MsgBox,4,, % "拷贝复制" . filep . "?" ？
+            clipboard := OutputVar
+            IfMsgBox Yes 
+                Send ^v
+            else
+               return
+            return
+        }
+        else
+        {
+            MsgBox % filep . "  error:文件不存在或错误" . ErrorLevel
+        }
+    } 
     
     
     
