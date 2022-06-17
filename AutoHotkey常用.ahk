@@ -2,6 +2,8 @@
 #Include E:\____dropbox__Sync\Dropbox\配置文件中转站\AutoHotkey\AutoHotkey菜单.ahk
 
 
+RControl::Run, explore C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent
+
 :*:/list::
 clipboard = 
 (
@@ -19,27 +21,62 @@ clipboard =
 	ctrl+alt+m 		: 运行 任务管理器
 	看相片右键		：相当于空格，暂停
 热子串
-	/gp	 			：登录ssh ，node gpszl_股票上涨率.js
-	/find 			: centos命令find
-	/ssh			: 登录ssh
-	/xiazai			: 下载AllHistoryData_2021-11-10_1625.txt
-	/sj				: 系统时间
-	/ps
-	/cls
-	/fuwu
-	/duankou
-	/find
-	/kill
-	/ll
-	/hosts			: 
-	/release
-	/cpu
-	/memory
-	/txvps
-	/nmap
-	/555
-	/rm 
-	/dock
+	/ssh::
+	/gp::
+	/xiazai::
+	/txvps::
+	/hosts::
+	/sj::
+	/jd::
+	/xigua::
+	/yt::
+	/tt::
+	/con::
+	/find::
+	/ps::
+	/cls::
+	/fuwu::
+	/duankou::
+	/duankou::
+	/find::
+	/kill::
+	/ll::
+	/release::
+	/cpu::
+	/memory::
+	/rm::
+	/screen::
+	/jj::
+	/fakao::
+	/tan::
+	/pip::
+	/p35::
+	/vhost::
+	/promise::
+	/php::
+	/if::
+	/nodejs::
+	/cha::
+	/reg::
+	/cmd::
+	/curl::
+	/net ::
+	/docker::
+	/firewall::
+	/df::
+	/nmap::
+	/ffmpeg::
+	/dos::
+	/find::
+	/zero::
+	/py::
+	/google::
+	/mklink::
+	/link::
+	/mongodb::
+	/npm::
+	/time::
+	/form::
 )
 Send, ^v
 Return
@@ -268,8 +305,8 @@ ProcSubroutine:
 :*:/ps::ps -ef | grep http 					;查看进程
 :*:/cls::clear								;清屏
 :*:/fuwu::netstat -ntlp						;查看服务
-:*:/duankou::netstat -aultnp | grep 80  		;查看端口
-:*:/duankou::netstat -aultnp | grep :80 | sort 	;查看端口排序
+:*:/port::netstat -aultnp | grep 80  		;查看端口
+:*:/port::netstat -aultnp | grep :80 | sort 	;查看端口排序
 :*:/find::find / -name master
 :*:/kill::kill -9 xxx							;杀死进程
 :*:/ll::ll -lh -t 								;大小时间倒序
@@ -289,11 +326,149 @@ ProcSubroutine:
 :*:/php:: set path=%path%;E:\xampp\php\       php -S 127.0.0.1:3000;
 :*:/if::if(){{}`n{down};{up}{up}{right}
 :*:/nodejs::cd /nodeApp/zhhw-nodejs/download
-:*:/cmd::reg add "HKLM\SOFTWARE\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "cd /d E:\git_15home\puppeteer\express\gp涨幅天数排行"
+
+:*:/cha::
+	clipboard = 
+	(
+一、菊花茶的功效与作用
+
+
+菊花茶的功效与作用
+药材性味：甘、苦，微寒。
+
+功效作用：散风清热，平肝明目，清热解毒。用于风热感冒，头痛眩晕，目赤肿痛，眼目昏花，疮痈肿毒。
+
+中医揭露：很多人都喜欢菊花茶加冰糖饮用，这种做法其实是错误的。菊花性微寒，加冰糖只会雪上加霜，对于阳虚体质的人来说更不适合。而且很多咽炎患者长期喝菊花茶以求缓解症状，这也是不科学的，对于体质偏虚寒者，如果一味地喝具有清热泻火功效的菊花茶，容易损伤正气，反而会加重咽炎症状。
+
+二、茉莉花茶的功效与作用
+
+
+茉莉花茶的功效与作用
+药材性味：辛甘，温。
+
+功效作用：理气，开郁，辟秽，和中。治下痢腹痛，结膜炎，疮毒。
+
+中医揭露：现代人精神压力普遍过大，于是有的人寄希望于喝杯茉莉花茶达到凝神静心的目的，这其实是一种误区。因为茉莉花茶中含有咖啡因会使人短暂兴奋，过后反而加重烦躁情绪对身体不利。神经不好或者经常失眠的人更要少喝茉莉花茶。
+
+三、桂花茶的功效与作用
+
+
+桂花茶的功效与作用
+药材性味：性辛，温。
+
+功效作用：化痰，散瘀。治痰饮嘲咳，肠风血痢，疝瘕，牙痛，口臭。
+
+中医揭露：由于桂花性辛，所以桂花茶乃至常见的桂花年糕等通常会加冰糖或者蜂蜜调味，因此高血压患者不适宜过多饮用，且桂花可治疗肠风血痢，因此大便干燥便秘者禁服。
+
+四、金银花茶的功效与作用
+
+
+金银花茶的功效与作用
+药材性味：甘，寒。
+
+功效作用： 清热解毒，疏散风热。用于痈肿疔疮，喉痹，丹毒，热毒血痢，风热感冒，温病发热。
+
+中医点评：人们需要消炎解毒镇痛时，往往第一时间想到金银花茶，这原本没错，但是仅适合夏天使用，因金银花性寒凉，故而其他季节建议多选雏菊、金盏花等偏寒花草茶代替饮用。
+
+五、百合花茶的功效与作用
+
+
+百合花茶的功效与作用
+药材性味：性微寒平，味甘微苦。
+
+功效作用：润肺，清火，安神。治咳嗽，眩晕，夜寐不安，天疱湿疮。
+
+中医点评：部分百合花是有毒性的，所以，不可自行食用，即使作为药用，也要严格按照医生的医嘱使用。
+
+六、牡丹花茶的功效与作用
+
+
+牡丹花茶的功效与作用
+药材性味：性平，味苦淡。
+
+功效作用：调经活血。
+
+中医点评：牡丹花其实不适合长期泡服的，不然就会造成脾胃虚寒、大便溏泄、饮食减少，需要及时根据体质调整花茶种类，兼顾着喝以免出现副作用。
+
+七、洛神花茶的功效与作用
+
+
+洛神花茶的功效与作用
+药材性味：味酸，性寒、凉。
+
+功效作用：利尿，止咳，解酒毒，清热止渴，解暑降压；
+
+中医点评：许多爱美女士喜欢饭后饮用洛神花茶达到减肥降脂的目的，这是不科学的，洛神花中含有大量有机酸，从而响消化吸收，甚至会造成饭后腹胀和不适感，增加肠胃负担。
+
+八、金盏花的功效与作用
+
+
+金盏花的功效与作用
+药材性味：味酸、甘，性寒。
+
+功效作用：利尿，发汗，兴奋，缓下，通经。
+
+中医点评：金盏菊花茶其实本身是没有什么禁忌性的，但是金盏菊花茶和其他的菊花茶一样，都属于寒凉的饮品，因此，经期以及体质虚寒的人可不能多喝。最值得注意的是，金盏菊花茶忌与鱼类食用，不然有可能会造成中毒。
+
+九、樱花茶的功效与作用
+
+
+樱花茶的功效与作用
+药材性味：甘、微苦，性平。
+
+功效作用：调节血糖血脂、延缓衰老、增进皮肤光泽与弹性。
+
+中医点评：作为泡出来最好看的花茶，樱花茶不光只有外表，早在94年便发现其富含“第二人参”之称的绞股蓝，因此在日本备受追捧。但并非所有品种的樱花都能食用，有很多人路边捡拾飘落的樱花便去泡茶，这都是存在安全隐患的，要喝樱花茶最好是去“樱花茶网”等专业渠道才更令人放心。
+
+十、玫瑰花茶的功效与作用
+
+
+玫瑰花茶的功效与作用
+药材性味：甘、微苦，温。
+
+功效作用：行气解郁，和血，止痛。用于肝胃气痛，食少呕恶，月经不调，跌扑伤痛。
+
+中医点评：爱美女性拿玫瑰花茶当宝，但玫瑰花活血散淤的作用比较强，因此，除了月经不调的女性，月经量过多或甚至月经正常的女性，在经期也都最好不要饮用玫瑰花茶。
+
+以上就是中药领域对常见10种花茶的功效与作用的介绍，虽然饮用花茶可以起到保健功效，但是有一点需牢记，食品毕竟不可替代药品，如有相关症状还须前往医院诊治，而且花茶多有活血化瘀功效，所以孕妇饮用前必须咨询专业人员，最后祝大家科学饮茶，喝出健康美丽！
+	)
+	Send ^v
+	return 
+
+
+:*:/reg::
+	clipboard = 
+	(
+		var patt = /\$\d{6}\$/g;
+	    var rt2 = rt.match(patt);
+	    var rt3 = rt2.map(x=> x.replaceAll("$",""));
+	)
+	Send ^v
+	return 
+
+
+:*:/cmd::
+	clipboard = 
+	(
+		reg add "HKLM\SOFTWARE\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "cd /d :\git_15home\puppeteer\express\gp涨幅天数排行"
+		curl --proxy http://127.0.0.1:7890 www.google.com
+		curl --socks5 http://127.0.0.1:7890 www.google.com
+		set HTTP_PROXY=http://127.0.0.1:7890
+		set HTTP_PROXY=https://127.0.0.1:7890
+	)
+	Send ^v
+	return 
+
 
 :*:/curl::
 	clipboard = 
 	(
+		-A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0"
+		-H "Content-Type: application/json" 
+		-H "application/x-www-form-urlencoded"
+		-H "multipart/form-data"
+		-H "Content-Type: application/text" 
+		-F 'P_code=cn_515030-ETF-,cn_512760-ETF-,cn_512880-ETF-'
 		curl -b "oa2.txt" "https://oa.gzqiaoyin.com/wui/main.jsp"
 
 		curl --cookie "从editCookie插件导出" "https://oa.gzqiaoyin.com/wui/main.jsp"
@@ -301,6 +476,9 @@ ProcSubroutine:
 		curl --cookie "em_hq_fls=.....1654581252879" "http://myfavor.eastmoney.com/v4/webouter/as?appkey=d41d8cd98f00b204e9800998ecf8427e&cb=jQuery33103190186058732998_165458125273&g=1&sc=0`%24000968&_=1654581252879" --referer http://quote.eastmoney.com/
 
 		curl -v -I --referer http://baidu.com --user-agent 'Chrome/54.0 (Windows NT 10.0)' http://baidu.com/ 
+
+		curl --proxy http://127.0.0.1:7890 www.google.com
+		curl --socks5 http://127.0.0.1:7890 www.google.com
 
 	)
 	Send ^v
@@ -329,7 +507,7 @@ ProcSubroutine:
 :*:/docker::
 	clipboard = 
 	(	
-
+		docker restart myrunoob
 		docker stop mongo:3.6
 		docker system df  【查看空间】
 		docker container rm 37330e42b298   【删除实例】
@@ -569,6 +747,8 @@ ProcSubroutine:
 	npm install -g @vue/cli-service
 	yarn global bin  //查看 yarn 全局bin位置
 	yarn global dir  //查看 yarn 全局安装位置
+	npm list -g
+	git config --global url."https://".insteadOf git://
 	)
 	Send ^v
 	return

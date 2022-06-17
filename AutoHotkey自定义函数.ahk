@@ -1,4 +1,14 @@
-﻿;本地下载涨幅天数排行
+﻿;管理东方财富,同花顺的自选股
+    do_zxg()
+    {
+        run cmd
+        sleep 500
+        send {shift}
+        send , e:{enter}
+        send, cd "E:\git_15home\puppeteer\express\gp涨幅天数排行"{enter}
+        send, node addto_JQJK.js
+    }
+;本地下载涨幅天数排行
     gpszl_run_local()
     {
     	run cmd
@@ -257,7 +267,7 @@
         data := getData()
         MsgBox % data
         data2 := forData_toBLK(data)
-        MsgBox,4,,是否将自选股代码到blk文件?？
+        MsgBox,4,,是否将自选股代码到D:\海王星金融终端-中国银河证券\T0002\blocknew\ZXG.blk文件?？
         IfMsgBox Yes 
             SaveData_toBLK(data2)
         else

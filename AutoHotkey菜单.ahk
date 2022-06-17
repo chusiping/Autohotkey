@@ -11,6 +11,7 @@ Menu, MyMenu, Add, 保存同花顺自选股,   ma7
 Menu, MyMenu, Add, 启动爬虫,   	 	 ma9
 Menu, MyMenu, Add, 显示新闻,   	 	 ma10
 Menu, MyMenu, Add, 拷贝FormMakinghtml,	 ma11
+Menu, MyMenu, Add, 管理东方财富等自选股,	 	ma12
 
 Menu, MyMenu, Add  
 
@@ -43,6 +44,10 @@ evt4:
 	sleep 1000
 	send {shift}
 	send ,"d:\Program Files (x86)\NetSarang\Xshell 4\Xshell.exe" -url ssh://root:Qy@123456@redis.qy{enter}
+return
+
+ma12:
+    do_zxg()
 return
 
 ma1:
