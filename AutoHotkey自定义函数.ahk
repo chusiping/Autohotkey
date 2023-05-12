@@ -1,4 +1,17 @@
-﻿;管理东方财富,同花顺的自选股
+﻿    loginVps()
+    {
+        run cmd
+        sleep 500
+        clipboard =
+        (
+            "d:\Program Files (x86)\NetSarang\Xshell 4\Xshell.exe" -url ssh://root:tx.1qaz@WSX@121.4.43.207
+        )
+        send,^v
+        send,{enter}
+        sleep 3000
+    }
+
+;管理东方财富,同花顺的自选股
     do_zxg()
     {
         run cmd
@@ -13,7 +26,6 @@
     {
     	run cmd
 	    sleep 500
-	    send {shift}
         send , e:{enter}
         send, cd "E:\git_15home\puppeteer\zhhw-nodejs"{enter}
         send, node gpszl_上涨率_断点续传.js 1
@@ -26,8 +38,8 @@
         send {shift}
         send ,ssh root@redis.qy{enter}
         sleep 1000
-        send, cd /root/NodeJsApp/zhhw-nodejs{enter} 
-		send, rm -f download/*{enter} 
+        send, cd /root/NodeJsApp/zhhw-nodejs{enter}
+		send, rm -f download/*{enter}
 		sleep 300
         send, node gpszl_上涨率_断点续传.js 1
     }
@@ -44,10 +56,10 @@
     {
         run cmd
         send {shift}
-        FormatTime, CurrentDateTime,, yyyy-MM-dd  
+        FormatTime, CurrentDateTime,, yyyy-MM-dd
         sleep 500
         send {shift}
-        clipboard = 
+        clipboard =
         (
         pscp -pw Qy@123456 root@redis.qy:/root/NodeJsApp/zhhw-nodejs/download/AllHistoryData_%CurrentDateTime%.txt E:\git_15home\puppeteer\express\gp涨幅天数排行\download\AllHistoryData_%CurrentDateTime%.txt
         )
@@ -59,7 +71,6 @@
     {
         run cmd
         sleep 500
-        send {shift}
         send,ssh root@121.4.43.207{enter}
     }
 ;127.0.0.1:3000
@@ -67,7 +78,6 @@
     {
     	run cmd
 	    sleep 500
-	    send {shift}
         send , e:{enter}
         send, cd "E:\git_15home\puppeteer\express\gp涨幅天数排行"{enter}
         send, node index.js
@@ -85,14 +95,14 @@
         arr := Array()
         Run C:\Windows\Notepad.exe
         sleep 1000
-        Haystack:=clipboard 
+        Haystack:=clipboard
         NeedleRegEx:="O)(\d{6})"
         Match := {Len: {0: 0}},  FoundPos := 1
-        While (FoundPos := RegExMatch(Haystack, NeedleRegEx, Match, FoundPos + Match.Len[0]))       
-        {   
+        While (FoundPos := RegExMatch(Haystack, NeedleRegEx, Match, FoundPos + Match.Len[0]))
+        {
             tr:=1
             for index, el in arr
-            {   
+            {
                 if(el = Match.Value(0) )
                 {
                     tr:=0
@@ -102,25 +112,25 @@
             {
                 arr.push(Match.Value(0))
                 sendinput,% Match.Value(0) ","  ;Msgbox % Match.Value(0)
-            } 
+            }
         }
-    }   
+    }
 ;自动保存news数据库
     saveNewsDB()
     {
         CoordMode, ToolTip, Screen
         run C:\Program Files (x86)\PremiumSoft\Navicat Premium\navicat.exe
-        sleep 5000 
-        Click ,7 243 
+        sleep 5000
+        Click ,7 243
         Click 2  ;ip
-        sleep 800 
+        sleep 800
         click, 75 450
         Click 2 ;db
-        sleep 800 
+        sleep 800
         click, 670 93
-        sleep 800 
-        Click, 538 180 
-        sleep 1200 
+        sleep 800
+        Click, 538 180
+        sleep 1200
         send, news_db_%A_YYYY%-%A_MM%-%A_DD%
     }
  ;自动保存typcho数据库
@@ -128,19 +138,19 @@
     {
         CoordMode, ToolTip, Screen
         run C:\Program Files (x86)\PremiumSoft\Navicat Premium\navicat.exe
-        sleep 5000 
-        Click ,7 243 
+        sleep 5000
+        Click ,7 243
         Click 2  ;ip
-        sleep 800 
+        sleep 800
         click, 65 640
         Click 2 ;db
-        sleep 800 
+        sleep 800
         click, 670 93
-        sleep 800 
-        Click, 538 180 
-        sleep 1200 
+        sleep 800
+        Click, 538 180
+        sleep 1200
         send, typcho_db_%A_YYYY%-%A_MM%-%A_DD%
-    }   
+    }
 ;图片侦测点击
     ;ClickPicture("E:\____dropbox__Sync\Dropbox\配置文件中转站\AutoHotkey\侦测的图片目录\mysql_ip.png", 2, 6,true,false)
     ClickPicture(ImageFilePath,ClickCount:=1,Speed:=0,Return:=true,ShowError:=true){
@@ -156,7 +166,7 @@
             }
             return false
         }
-        
+
     }
 
     ClickPosition(posX,posY,ClickCount:=1,Speed:=0,CoordMode:="Screen",Return:=true){
@@ -171,7 +181,7 @@
         ;若使用其他模式
         }else{
             CoordMode,Mouse,%CoordMode%
-            MouseGetPos, posX_i, posY_i 
+            MouseGetPos, posX_i, posY_i
             if %ClickCount%{
                 MouseClick,,%posX%,%posY%,%ClickCount%,%Speed%
             }else{
@@ -243,7 +253,7 @@
     }
     AutoAddMyStock_old_ok()
     {
-        arr = %clipboard% 
+        arr = %clipboard%
         StringSplit, arrNew, arr,`,
         Loop, %arrNew0%
         {
@@ -268,7 +278,7 @@
         MsgBox % data
         data2 := forData_toBLK(data)
         MsgBox,4,,是否将自选股代码到D:\海王星金融终端-中国银河证券\T0002\blocknew\ZXG.blk文件?？
-        IfMsgBox Yes 
+        IfMsgBox Yes
             SaveData_toBLK(data2)
         else
            return
@@ -277,13 +287,13 @@
     }
     forData_toBLK(arr) {
         StringSplit, arrNew, arr,`,
-        str:=  
+        str:=
         Loop, %arrNew0%
         {
             str0 := add_1or6(arrNew%A_Index%)
-            str := str str0 "`n" 
+            str := str str0 "`n"
         }
-        return str 
+        return str
     }
     SaveData_toBLK(arr)
     {
@@ -293,12 +303,12 @@
         tooltip 成功
         sleep 1000
         tooltip
-        return 
+        return
     }
     add_1or6(str)
     {
         head := "0"
-        firstStr := SubStr(str, 1, 1) 
+        firstStr := SubStr(str, 1, 1)
         if(firstStr=6){
             head:= "1"
         }
@@ -313,7 +323,7 @@
         {
             MsgBox,4,, % "拷贝复制" . filep . "?" ？
             clipboard := OutputVar
-            IfMsgBox Yes 
+            IfMsgBox Yes
                 Send ^v
             else
                return
@@ -323,9 +333,27 @@
         {
             MsgBox % filep . "  error:文件不存在或错误" . ErrorLevel
         }
-    } 
-    
-    
-    
-    
-    
+    }
+;分割股票代码的逗号,重复添加到软件
+    reateAdd()
+    {
+        arr = %clipboard%
+        MsgBox % arr
+        MsgBox,4,,准备循环数组添加,开始吗？
+        IfMsgBox Yes
+        {
+            StringSplit, arrNew, arr,`,
+            Loop, %arrNew0%
+            {
+                str := arrNew%A_Index%
+                send,{text}%str%
+                sleep  200
+                send,{enter}
+            }
+        }
+        else
+           return
+        return
+    }
+
+

@@ -17,11 +17,19 @@ SoundBeep, 250, 500
 MsgBox %msg%
 return
 
+;===========  置顶 ==============
+!space:: 
+;将当前激活窗口存入变量w
+WinGetActiveTitle, w
+;对w窗口置顶，Toggle表示在on 与 off 中切换
+Winset, AlwaysOnTop, Toggle, %w%
+;返回执行
+return
 
 
 ;===========  `键 在浏览器，word下不同作用	==============
 #IfWinActive, ahk_exe chrome.exe
-`::	send ,^w
+;`::	send ,^w
 #IfWinActive
 
 #IfWinActive, ahk_exe WINWORD.EXE
@@ -38,9 +46,17 @@ $CapsLock::Enter
 $F3::Backspace
 $F4::Delete
 $F1::^v
+
+$F12::
+send,{F2}{HOME}
+send,^v
+send,{enter}
+return
+
 LALT & Capslock::SetCapsLockState, % GetKeyState("CapsLock", "T") ? "Off" : "On"
 
 ;###### 右键双击，中间粘贴 ########	
+#IfWinExist  ahk_exe chrome.exe
 gnPressCount := 0
 $F9::
 {
@@ -69,33 +85,44 @@ $MButton::
      send ^v`
      Return
 }
-
+#IfWinExist 
 
 ;################################## alt 1,2,3 快速搜索区域 ##############################
 
-!1:: ;win+1 -> 用google搜索剪切板的内容
-send,^c
-run "C:\Users\Administrator\AppData\Local\CentBrowser\Application\chrome.exe" https://www.google.com/search?q=%clipboard%
-sleep 1000
-tooltip,
-return
+
+;!1:: ;win+1 -> 用google搜索剪切板的内容
+;send,^c
+;run "C:\Users\Administrator\AppData\Local\CentBrowser\Application\chrome.exe" https://www.google.com/search?q=%clipboard%
+;sleep 1000
+;tooltip,
+;return
 
 
-!2:: ;win+2 -> 搜索股票信息
-send,^c
-code := to_code2(clipboard)
-;输出(code)
-run "C:\Users\Administrator\AppData\Local\CentBrowser\Application\chrome.exe" http://quote.eastmoney.com/%code%.html
-sleep 1000
-tooltip,
-return
+;!2:: ;win+2 -> 搜索股票信息
+;send,^c
+;code := to_code2(clipboard)
+;;输出(code)
+;run "C:\Users\Administrator\AppData\Local\CentBrowser\Application\chrome.exe" http://quote.eastmoney.com/%code%.html
+;sleep 1000
+;tooltip,
+;return
 
-!3:: ;win+2 -> 搜索股票咨询
-send,^c
-run "C:\Users\Administrator\AppData\Local\CentBrowser\Application\chrome.exe" www.google.com/search?q=%clipboard%`%20site:caifuhao.eastmoney.com
-sleep 1000
-tooltip,
-return
+;!3:: ;win+3 -> 搜索股票咨询
+;send,^c
+;run "C:\Users\Administrator\AppData\Local\CentBrowser\Application\chrome.exe" www.google.com/;search?q=%clipboard%`%20site:caifuhao.eastmoney.com
+;sleep 1000
+;tooltip,
+;return
+
+!3::
+send,^+a
+sleep,200
+send,r
+sleep,200
+send ^s
+sleep,200
+send,{enter}
+return 
 
 
 ;自定义函数
@@ -125,3 +152,5 @@ to_code2(x)
         }
         ControlSend,,::%内容%`r,ahk_class ConsoleWindowClass
 }
+
+NumpadSub:: Send {backspace}

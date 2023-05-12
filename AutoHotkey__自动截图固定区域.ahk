@@ -1,0 +1,9 @@
+;使用spipast截图字幕
+$F7::
+	send,^+a
+	sleep,200
+	send,r
+	sleep,200
+	Send,^s
+	send,{enter}
+return
