@@ -1,6 +1,15 @@
 ﻿#SingleInstance Force
 #Include E:\____dropbox__Sync\Dropbox\配置文件中转站\AutoHotkey\AutoHotkey菜单.ahk
 
+
+^+d::
+	send ^a
+	sleep 50
+	send {Backspace}
+	sleep 50
+	send ^v
+return
+
 ^!r::
 	run cmd
 	sleep 500
@@ -56,23 +65,33 @@ return
 	return
 
 
+
 ;;===========  chrome.exe	==============
 #IfWinActive, ahk_exe chrome.exe
 
 ;===========  youtube快捷快退	==============
 	2::
 		WinGetTitle, title, A
-		If InStr(title,"YouTube")
-			send , {right 2}
+		If (InStr(title,"YouTube") or InStr(title,"bilibili"))
+			send , {right 1}
 		else
 			send , 2
 		return
 	return
 	1::
-		If InStr(title,"YouTube")
-			send , {left 2}
+		WinGetTitle, title, A
+		If (InStr(title,"YouTube") or InStr(title,"bilibili"))
+			send , {left 1}
 		else
 			send , 1
+		return
+	return
+	$Down::
+		WinGetTitle, title, A
+		If (InStr(title,"YouTube") or InStr(title,"bilibili"))
+			Send {Space}
+		else
+			Send {Down}
 		return
 	return
 
@@ -106,15 +125,23 @@ return
 	return
 #IfWinActive
 
+;;===========  vlc 	==============
+#IfWinActive, ahk_exe vlc.exe
+	$down::
+		send , {Space}
+	return
+#IfWinActive
+
 ;;===========  potplayer 	==============
 #IfWinActive, ahk_exe hexin.exe
 	2::
 		send , {Up}
 	return
-	1::
+	$Space::
 		send , {Down}
 	return
 #IfWinActive
+
 
 ;################银河证券交易############
 ^!j::
@@ -138,6 +165,23 @@ return
 FormatTime, CurrentDateTime,, yyyy-M-d H:mm
 SendInput %CurrentDateTime%
 return
+
+;===时间
+:*:/rq::
+FormatTime, CurrentDateTime,, yyyy-M-d
+SendInput %CurrentDateTime%_
+return
+
+;################ navicat mysql ############
+#IfWinActive, ahk_exe navicat.exe
+	^w::
+		send,^/
+		return
+	^+w::
+		send,^+/
+		return
+#IfWinActive
+
 
 
 ;################ sublime专门设定 ############
@@ -204,31 +248,78 @@ ProcSubroutine:
 #IfWinActive
 
 
-:*:/con::console.log('▶'){left 1}
+:*:..con::console.log('▶'){left 1}
 :*:/find::find / -name master
-:*:/kill::kill -9 xxx
-:*:/ll::ll -lh -t
-:*:/release::cat /etc/redhat-release
+:*:..kill::kill -9 xxx
+:*:..ll::ll -lh -t
+:*:..re::cat /etc/redhat-release
 :*:/mem::free -m
 :*:/rm::rm -f *  rm -rf xx @删除文件夹子
 ;:*:/in::echo $STY{enter}   ;[是否在screen里]
 
+::..ssh::
+Run, cmd.exe
+WinWaitActive, ahk_exe cmd.exe
+Send, ssh root@121.4.43.207{Enter}
+return
 
-:*:/ali::
-	send, alias fuwu='netstat -ntlp'	 {enter}
-	send, alias ps1='ps -ef | grep http' {enter}
-	send, alias cls='clear'{enter}'
-	send, alias net='netstat -ntlp | sort'{enter}
-	send, alias port='netstat -aultnp | grep 80' {enter}
-	send, alias sc='screen -ls' {enter}
-	send, alias sc-r='screen -r' {enter}
-	send, alias dk='firewall-cmd --list-ports' {enter}
-	send, alias ps2='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"  -a' {enter}
-	sendraw, alias net2='netstat -ntlp  | awk -F '[1234567890]/'  '$2 !~ /Program name|zerotier-one/ {print $1,$2}' OFS="\t" | sort -k8,8r' {enter}
+;linxu命令常用(还是要加一个不然效率太低2023-6-1)
+:*:..save::
+	ReadText("ahk_readtxt\linxu命令常用.txt",1)
+	return
+:*:..load::
+	ReadText("ahk_readtxt\linxu命令常用.txt",2)
+	return
+:*:..tag::
+	ReadText("ahk_readtxt\linxu命令常用.txt",3)
+	return
+:*:..run::
+	ReadText("ahk_readtxt\linxu命令常用.txt",4)
+	return
+:*:..comm::
+	ReadText("ahk_readtxt\linxu命令常用.txt",5)
+	return
+:*:..copy::
+	ReadText("ahk_readtxt\linxu命令常用.txt",6)
+	return
+:*:..cat::
+	ReadText("ahk_readtxt\linxu命令常用.txt",7)
+	return
+:*:..rm::
+	ReadText("ahk_readtxt\linxu命令常用.txt",8)
+	return
+:*:..ip::
+	ReadText("ahk_readtxt\linxu命令常用.txt",9)
+	return
+:*:..addr::
+	ReadText("ahk_readtxt\配置centos的ip.txt",0)
+	return
+:*:..ali::
+	ReadText("ahk_readtxt\alias别名.txt",0)
+	return
+:*:..yao::
+	ReadText("E:\____dropbox__Sync\Dropbox\temp\碎片\药方.txt",0)
 	return
 
 
-
+ReadText(_path,idx)
+{
+    Loop, read, %_path%
+    {
+        row=% A_Index
+        Loop, parse, A_LoopReadLine, %A_Tab%
+        {
+			;rt=%rt%`n%A_LoopField%
+            if (row=idx)            {
+                Sendraw, %A_LoopField%
+                return
+            }
+            if (idx=0){
+                Sendraw, %A_LoopField%`n
+            }
+        }
+    }
+}
 
 
 
