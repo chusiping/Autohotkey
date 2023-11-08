@@ -1,7 +1,8 @@
 ﻿
-getPngPath(){
+getPngPath(snipaste_path){
     rt:=
-    picDir:="D:\lvse\Snipaste_2.8.5Beta_64bit_Green\history\XOQ0DN\"
+    picDir:=snipaste_path
+    ;edit：picDir:="D:\lvse\Snipaste_2.8.5Beta_64bit_Green\history\XOQ0DN\"
     uPicPath:="there is no pic in dir picture!"
     Loop, %picDir%\*.png
         FileList = %FileList%%A_LoopFileTimeModified%`t%A_LoopFileName%`n
@@ -14,7 +15,7 @@ getPngPath(){
             
         ;RunWait, %picDir%\%FileItem2%
         FileSetAttrib, -R, %picDir%\%FileItem2%
-        ;uPicPath=%picDir%\%FileItem2%       
+        ;edit ：uPicPath=%picDir%\%FileItem2%       
         uPicPath=%FileItem2%  
     }
     rt:= picDir . uPicPath

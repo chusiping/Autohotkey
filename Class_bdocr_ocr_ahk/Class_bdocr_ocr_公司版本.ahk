@@ -15,20 +15,35 @@ SECRET_KEY:="rLujoGfTzs6RHHHzmMRmKb9wBCqOypSp"
 		MsgBox 0x40010, , 照着教程先去 https://cloud.baidu.com/ 申请账号。
 		ExitApp
 	}
-
-	pngf:=getPngPath()
+	pngf:=getPngPath("D:\lvse\Snipaste_2.8.5Beta_64bit_Green\history\XOQ0DN\")
 	; MsgBox, % pngf
+	ret:=""
+	str:=""
 
 	ocr:=new bdocr(API_KEY, SECRET_KEY)
 	ret:=ocr.GetOcr(pngf,"accurate_basic")
-
 	; ret:=ocr.GetOcr(A_ScriptDir "\3.png","accurate_basic")	; 高精度识别
 	; ret:=ocr.GetOcr(pBitmap,"general_basic")					; 普通精度识别
 	for k,v in JSON.Load(ret).words_result
 		str.=v.words "`r`n"
-	MsgBox, % str
+	Gui, Destroy
+    Gui, Add, Edit, vMyText w600 h400, %str%
+    Gui, Add, Button, gCloseButton, CLOSE
+    Gui, Show
+	;editMsgBox, % str
+
 	Clipboard := str
 	ClipWait, 1
 	Return
 
 
+CloseButton:
+    GuiControlGet, text, , MyText
+    Clipboard := text
+    Gui, Destroy
+	Reload
+	return
+GuiClose:
+    Gui, Destroy
+	Reload
+	return
