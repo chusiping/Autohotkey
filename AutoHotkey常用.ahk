@@ -39,6 +39,25 @@ return
 		run_taskmgr()
 	return
 
+;;===========  cmd，xshell	==============
+#IfWinActive, ahk_exe ConEmu64.exe
+`::
+	Send, {Up}
+	Return
+·::
+	Send, {Up}
+	Return
+#IfWinActive
+
+#IfWinActive, ahk_exe MobaXterm.exe
+`::
+	Send, {Up}
+	Return
+·::
+	Send, {Up}
+	Return
+#IfWinActive
+
 ;;===========  JPEGView.exe	==============
 #IfWinActive, ahk_exe JPEGView.exe
 $up::send,{WheelUp}
@@ -55,14 +74,14 @@ send,{enter}
 return
 #IfWinActive
 
-^1::
-	send ^c
-	Sleep 50
-    thisvar := clipboard
-    thisvar := "<font color='red' size=''>" . thisvar . "</font>"
-    clipboard := thisvar
-    send ^v
-	return
+;^1::
+;	send ^c
+;	Sleep 50
+;    thisvar := clipboard
+;    thisvar := "<font color='red' size=''>" . thisvar . "</font>"
+;    clipboard := thisvar
+;    send ^v
+;	return
 
 
 
