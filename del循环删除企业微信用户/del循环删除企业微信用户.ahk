@@ -2,6 +2,8 @@
 #Include del循环删除企业微信用户_findTextClass_en.ahk
 #Include del循环删除企业微信用户_通用函数.ahk
 
+;转配地址：https://work.weixin.qq.com/wework_admin/frame#contacts
+
 MoveAndClick(x, y) {
     MouseMove, x, y
     Sleep, 1000
