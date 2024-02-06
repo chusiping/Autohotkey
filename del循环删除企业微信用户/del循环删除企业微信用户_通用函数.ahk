@@ -27,6 +27,11 @@ y返回 :=y
 
 
 
+Text_删除:="|<>*179$49.zzzszzwzw21wM1wTy10mA0w7zAaN6Aw1zaHAX4S8Tn9aFWCC7tYn8lADVwmNYM4DsCNAmA0007AaN6100K000X4zXz000FWDlztYn8lbszwmNYMk00SNAmAM00DAaN6AT7zaHAX0NWTX9aFU8l7lYnskQsltkNwMwQQQUAyAQSD400M6DM7zTYQ77w7z"
+ok_删除 := FindTextGeneral(Text_删除, 2091, 974, 2091, 974, X, Y)
+x删除 :=x
+y删除 :=y
+
 
 
 

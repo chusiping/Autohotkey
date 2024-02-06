@@ -2,12 +2,12 @@
 #Include del循环删除企业微信用户_findTextClass_en.ahk
 #Include del循环删除企业微信用户_通用函数.ahk
 
-;转配地址：https://work.weixin.qq.com/wework_admin/frame#contacts
+;转配地址：https://work.weixin.qq.com/wework_admin/frame#contacts 浏览器比例100%
 
 MoveAndClick(x, y) {
     MouseMove, x, y
-    Sleep, 1000
-    ; Click
+    Sleep, 800
+    Click       ; 启用就 - 开启点击删除
 }
 
 ^!+p::
@@ -37,8 +37,18 @@ ProcessNumbers:
         ok_成员详情 := FindTextGeneral(Text_成员详情, 1412, 453, 1412, 453, X, Y)  ;
         if (ok_成员详情)                                ;自动结果，如果找到返回按钮
         {
-            MoveAndClick(1708, 547)                     ;点删除   
-            MoveAndClick(2090, 940)                     ;点确认
+            MoveAndClick(1708, 547)                     ;点删除,等待确认框  
+            Sleep, 500
+            Text_删除:="|<>*179$49.zzzszzwzw21wM1wTy10mA0w7zAaN6Aw1zaHAX4S8Tn9aFWCC7tYn8lADVwmNYM4DsCNAmA0007AaN6100K000X4zXz000FWDlztYn8lbszwmNYMk00SNAmAM00DAaN6AT7zaHAX0NWTX9aFU8l7lYnskQsltkNwMwQQQUAyAQSD400M6DM7zTYQ77w7z"
+            ok_删除 := FindTextGeneral(Text_删除, 2091, 974, 2091, 974, X, Y)
+            if (ok_删除)                                ;自动结果，如果找到返回按钮
+            {
+                MoveAndClick(2091, 974)                     ;点确认
+            }
+            else
+            {
+                MsgBox, 4, 提示, 无删除按钮, 1
+            }
         }
         else
         {
