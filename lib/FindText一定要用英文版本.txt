@@ -1,0 +1,4 @@
+2024-2-6 
+	中文版本的FindText.ahk可以用，但是生成的代码复制出来存成class的lib有乱码，不能用
+	需要复制纯英文的FindText_415.ahk，或者复制FindText_415.ahk到指定的目录底下
+	GUI每次会生成class，但避免使用，以后固定使用FindText_415.ahk里的class，用include包含
