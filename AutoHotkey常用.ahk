@@ -218,6 +218,13 @@ return
 	return
 #IfWinActive
 
+;################ cursor专门设定 ############
+#IfWinActive, ahk_exe Cursor.exe
+	^w::
+	send,^/
+	return
+#IfWinActive
+
 ;################ markdown ############
 #IfWinActive, ahk_exe Typora.exe
 	^w::
