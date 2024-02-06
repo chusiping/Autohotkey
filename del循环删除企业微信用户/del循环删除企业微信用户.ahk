@@ -1,14 +1,15 @@
+#SingleInstance Force
 #Include del循环删除企业微信用户_findTextClass_en.ahk
 #Include del循环删除企业微信用户_通用函数.ahk
 
 MoveAndClick(x, y) {
     MouseMove, x, y
     Sleep, 1000
-    Click
+    ; Click
 }
 
 ^!+p::
-    Gui, Add, Edit, w500 h300 r10 vPhoneNumberInputMultiLine, 输入多行手机号 (每行一个)
+    Gui, Add, Edit, w500 h300 vPhoneNumberInputMultiLine r10, 输入多行手机号 (每行一个)
     Gui, Add, Button, default w100 gProcessNumbers, 处理
     Gui, Show, Center, Phone Number Input
     
@@ -20,7 +21,9 @@ ProcessNumbers:
     Sleep, 100
     Loop, % phoneNumberArray.MaxIndex()
     {
-        phoneNumberVar := "PhoneNumberInput" A_Index
+        Text_成员详情:="|<>*136$68.7zzzzw1k00C1zzzzz0Q003UQ01k007zzzs700Q001zzzy1k03000Q003UQ00k0000000700A1k000001zz30Q000000TzkkC0Tzzzy7zwC3U7zzzzVk73Vk1k000sQ1ksQ0Q0Q0C70QCC070703Vk71XU1k1k0sQ1kNk0Q0Q0C70Q7s070703VU71y01k1k0sM1kD00Q0Q0CC0Q3UC70703XU61s3Vk3y0ss3Uz0k01zs0ATsTkA00wTk77wDC300S0z1k07Xlk0z03ws07kTw1zU0Ds"
+        
+        
         phoneNumber := Trim(phoneNumberArray[A_Index])  ; 去除前后空格
         MoveAndClick(1001, 448)                         ;移到输入框 
         Click 
@@ -28,8 +31,9 @@ ProcessNumbers:
         SendInput, ^a    
         Sleep, 200  
         SendInput, %phoneNumber%                        ;输入姓名或手机
-        Sleep, 1200                                     ;匹配需要等页面载入，等时间算法
-        if (FindTextGeneral(Text_成员详情, 1412, 453, 1412, 453, X, Y))    ;自动结果，如果找到返回按钮
+        Sleep, 1200                                     ;匹配需要等页面载入，等时间算法再执行
+        ok_成员详情 := FindTextGeneral(Text_成员详情, 1412, 453, 1412, 453, X, Y)  ;
+        if (ok_成员详情)                                ;自动结果，如果找到返回按钮
         {
             MoveAndClick(1708, 547)                     ;点删除   
             MoveAndClick(2090, 940)                     ;点确认
@@ -41,4 +45,5 @@ ProcessNumbers:
     }
     ExitApp  
 return
+
 Esc::Reload
