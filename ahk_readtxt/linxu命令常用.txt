@@ -1,0 +1,9 @@
+﻿docker save 镜像ID -o /root/temp/vhost1.0.tar vhost:1.0
+docker load < /root/temp/vhost1.0.tar
+docker tag 50036156148d chusiping/fanbq_python:3.6.3
+docker run -it --name py362  docker.io/chusiping/fanbq_python:3.6.2 bash
+docker commit py36 fanbq_python:3.6
+docker cp /root/temp/CC-attack py362:/root/py_code/
+cat /etc/issue
+docker rm -f
+vi /etc/sysconfig/network-scripts/ifcfg-ens160
