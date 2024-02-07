@@ -1,4 +1,4 @@
-  Class FindTextClass
+﻿  Class FindTextClass
   {  ;// Class Begin
   
   static bind:=[], bits:=[], Lib:=[], Cursor:=0
