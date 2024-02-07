@@ -1,20 +1,19 @@
-#SingleInstance Force
-#Include del循环删除企业微信用户_findTextClass_en.ahk
-#Include del循环删除企业微信用户_通用函数.ahk
+﻿#SingleInstance Force
+#Include del循环删除企业微信用户_findTextClass_en.ahk              
+#Include del循环删除企业微信用户_通用函数.ahk   
 
-;转配地址：https://work.weixin.qq.com/wework_admin/frame#contacts 浏览器比例100%
+;转配地址：https://work.weixin.qq.com/wework_admin/frame#contacts 浏览器比例100%   sleep时间根据网络调整
 
+CoordMode, Mouse, Screen
 MoveAndClick(x, y) {
     MouseMove, x, y
-    Sleep, 800
+    Sleep, 200
     Click       ; 启用就 - 开启点击删除
 }
 
-^!+p::
-    Gui, Add, Edit, w500 h300 vPhoneNumberInputMultiLine r10, 输入多行手机号 (每行一个)
-    Gui, Add, Button, default w100 gProcessNumbers, 处理
-    Gui, Show, Center, Phone Number Input
-    
+Gui, Add, Edit, w500 h300 vPhoneNumberInputMultiLine r10, 输入多行手机号 (每行一个)
+Gui, Add, Button, default w100 gProcessNumbers, 处理
+Gui, Show, Center, 批量删除企业微信用户
 return
 
 ProcessNumbers:
@@ -38,12 +37,13 @@ ProcessNumbers:
         if (ok_成员详情)                                ;自动结果，如果找到返回按钮
         {
             MoveAndClick(1708, 547)                     ;点删除,等待确认框  
-            Sleep, 500
+            Sleep, 200
             Text_删除:="|<>*179$49.zzzszzwzw21wM1wTy10mA0w7zAaN6Aw1zaHAX4S8Tn9aFWCC7tYn8lADVwmNYM4DsCNAmA0007AaN6100K000X4zXz000FWDlztYn8lbszwmNYMk00SNAmAM00DAaN6AT7zaHAX0NWTX9aFU8l7lYnskQsltkNwMwQQQUAyAQSD400M6DM7zTYQ77w7z"
             ok_删除 := FindTextGeneral(Text_删除, 2091, 974, 2091, 974, X, Y)
             if (ok_删除)                                ;自动结果，如果找到返回按钮
             {
-                MoveAndClick(2091, 974)                     ;点确认
+                MoveAndClick(X, Y)                      ;找到按钮的坐标，点确认
+                Sleep,200
             }
             else
             {
@@ -55,7 +55,7 @@ ProcessNumbers:
             MsgBox, 4, 提示, 无用户, 1
         }
     }
-    ExitApp  
+    ExitApp
 return
 
-Esc::Reload
+Esc::ExitApp
