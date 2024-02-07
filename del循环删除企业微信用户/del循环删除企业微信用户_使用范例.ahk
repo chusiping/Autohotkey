@@ -4,6 +4,8 @@
 #Include del循环删除企业微信用户_通用函数.ahk
 CoordMode, Mouse, Screen
 
+MsgBox, 定位到开始页面，准备开始
+
 
 ; if (ok_返回)
 ; {
