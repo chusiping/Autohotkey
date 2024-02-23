@@ -11,6 +11,19 @@ MoveAndClick(x, y) {
     Click       ; 启用就 - 开启点击删除
 }
 
+InputBox, InputText, 输入文本检测输入法, ,：
+
+if (!InputText) {
+    MsgBox, 空值检测失败！
+    ExitApp
+} else if RegExMatch(InputText, "[^a-zA-Z0-9]") {
+    MsgBox 中文输入法，请切换！
+    ExitApp
+}
+    
+
+
+
 Gui, Add, Edit, w500 h300 vPhoneNumberInputMultiLine r10, 每个成员一行多个属性逗号隔开
 GuiControl,, PhoneNumberInputMultiLine, 杨佩琪-yangpeiqi-19112692274`n李靖韵-lijingyun-18926106832 
 Gui, Add, Button, default w100 gProcessNumbers, 处理
