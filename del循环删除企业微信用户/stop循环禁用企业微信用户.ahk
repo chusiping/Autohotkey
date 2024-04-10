@@ -22,7 +22,7 @@ ProcessNumbers:
     Sleep, 100
     Loop, % phoneNumberArray.MaxIndex()
     {
-        Text_成员详情:="|<>*136$68.7zzzzw1k00C1zzzzz0Q003UQ01k007zzzs700Q001zzzy1k03000Q003UQ00k0000000700A1k000001zz30Q000000TzkkC0Tzzzy7zwC3U7zzzzVk73Vk1k000sQ1ksQ0Q0Q0C70QCC070703Vk71XU1k1k0sQ1kNk0Q0Q0C70Q7s070703VU71y01k1k0sM1kD00Q0Q0CC0Q3UC70703XU61s3Vk3y0ss3Uz0k01zs0ATsTkA00wTk77wDC300S0z1k07Xlk0z03ws07kTw1zU0Ds"
+        Text_成员详情:="|<>*140$105.00000000000000000000C40000000002020001lk0000000k1k0Q000C7U0zzzz0D0707U001kS07zzzs0s0Q1s000C1k0s00703U1kC0001k007000s0C0A3U3zzzzy0s00700s00s0Tzzzzk7000s06DzzzXzzzzy0s007001zzzwQ01k007zzzs0000s03U0C000zzzz0000700Q00k007000s0000s03U06000E0020TU0700Q00k70000003w00s03zy60s000000TUTzzsTzkkC0Tzzzy0A7zzz3zy71k3zzzzk1UzzzsQ1ksQ0Q000C0A00s03UC73U3U3U1k1U0700Q1kss0Q0Q0C0A00s03UC3703U3U1k1U0700Q1kNk0Q0Q0C0A00s03UC3w03U3U1k1VzzzyM1kTU0Q0Q0C0ATzzzn0C3s03U3U1k1Xzzzys1kC0sQ0S0C0A00s070A3k73U7w1k1U0700t3Uz0k81zs00AM0s06DwDs600SDs01b0700lz3nUk07UDk0Ds0s0600wSC07s0TU1w0700U0T1zk7y00z0T00s0403U7wTz001y3U07000080DVz0003k800s0000000C00004000300000000000000000004"
         
         
         phoneNumber := Trim(phoneNumberArray[A_Index])  ; 去除前后空格
@@ -33,11 +33,11 @@ ProcessNumbers:
         Sleep, 200  
         SendInput, %phoneNumber%                        ;输入姓名或手机
         Sleep, 1200                                     ;匹配需要等页面载入，等时间算法再执行
-        ok_成员详情 := FindTextGeneral(Text_成员详情, 1580, 536, 1580, 536, X, Y)  ;
+        ok_成员详情 := FindTextGeneral(Text_成员详情, 1432, 451, 1432, 451, X, Y)  ;
         if (ok_成员详情)                                ;自动结果，如果找到返回按钮
         {
             MoveAndClick(1580, 536)                     ;！！！修改点 -   删除,等待确认框  
-            Sleep, 200
+            Sleep, 300
             Text_禁用:="|<>*188$50.zzXzxzszzzszyDyDy040DlzXzU003yDtzz73lzVyTzllsTwzbzws00zztzzC00DzyDzXtlm1zXzs2QQUTkzw0b7D7wDz2803lz3zUW00wTkTs8b7D7w7y29lnla8zsWQMwFWDy8U0D0llzW1lXkMQTs0QQwCDXy077D77wTXXlnnXz1zsw0zlzsTyT8TwzzC"
             ok_删除 := FindTextGeneral(Text_禁用, 2140, 830, 2140, 830, X, Y)
 
