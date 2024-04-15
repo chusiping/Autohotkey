@@ -28,12 +28,12 @@ ProcessNumbers:
         phoneNumber := Trim(phoneNumberArray[A_Index])  ; 去除前后空格
         MoveAndClick(1001, 448)                         ;移到输入框   
         Click 
-        Sleep, 200      
+        Sleep, 400      
         SendInput, ^a    
         Sleep, 200  
         SendInput, %phoneNumber%                        ;输入姓名或手机
-        Sleep, 1200                                     ;匹配需要等页面载入，等时间算法再执行
-        ok_成员详情 := FindTextGeneral(Text_成员详情, 1432, 451, 1432, 451, X, Y)  ;
+        Sleep, 2500                                     ;匹配需要等页面载入，等时间算法再执行，这个时间太短是不行的
+        ok_成员详情 := FindTextGeneral(Text_成员详情, 1432, 451, 1432, 451, X, Y)  ; 
         if (ok_成员详情)                                ;自动结果，如果找到返回按钮
         {
             MoveAndClick(1580, 536)                     ;！！！修改点 -   删除,等待确认框  
