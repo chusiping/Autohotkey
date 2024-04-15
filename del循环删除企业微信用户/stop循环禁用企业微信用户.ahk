@@ -32,8 +32,13 @@ ProcessNumbers:
         SendInput, ^a    
         Sleep, 200  
         SendInput, %phoneNumber%                        ;输入姓名或手机
-        Sleep, 2500                                     ;匹配需要等页面载入，等时间算法再执行，这个时间太短是不行的
+        Sleep, 2000                                     ;匹配需要等页面载入，等时间算法再执行，这个时间太短是不行的
         ok_成员详情 := FindTextGeneral(Text_成员详情, 1432, 451, 1432, 451, X, Y)  ; 
+        ; if (!ok_成员详情){                            ;重要信息重复寻找
+        ;     MsgBox, 4, 提示, 无用户再次等待2秒, 1
+        ;     Sleep, 2500  
+        ;     ok_成员详情 := FindTextGeneral(Text_成员详情, 1432, 451, 1432, 451, X, Y)  ; 
+        ; }   
         if (ok_成员详情)                                ;自动结果，如果找到返回按钮
         {
             MoveAndClick(1580, 536)                     ;！！！修改点 -   删除,等待确认框  
@@ -62,6 +67,7 @@ ProcessNumbers:
         }
         else
         {
+            FileAppend, %phoneNumber%`n , nouser.txt
             MsgBox, 4, 提示, 无用户, 1
         }
     }
